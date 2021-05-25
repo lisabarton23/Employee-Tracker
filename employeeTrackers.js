@@ -5,16 +5,68 @@ const cTable =require ('console.table');
 const connection = mysql.createConnection({
   host: 'localhost',
 
-  // Your port, if not 3306
+  
   port: 3306,
 
-  // Your username
+  
   user: 'root',
 
-  // Be sure to update with your own MySQL password!
-  password: 'lENNOX3!',
+  
+  password: 'password',
   database: 'employee_trackerDB',
 });
+
+
+const start = () => {
+inquirer.prompt({
+name:'answer',
+type: "list",
+message :"Which area would like to view or add information to?",
+choices: ["add department", "add role", " add employee"],
+
+
+
+})
+.then ((answer) =>{
+  switch (answer.answer){
+    case "add department":
+      addDepartment()
+}
+//create functions to add department, role and employees 
+const addDepartment = () => {
+  // prompt for info about the department
+  inquirer
+    .prompt({
+name: "department",
+message:"What is the name of the department you want to enter?"
+
+
+
+    })
+    .then ((answer)=>{
+const query =''
+
+
+
+    })
+      // * **department**:
+
+      // * **id** 
+      // * **name** 
+
+
+    )]
+
+
+//create functions to veiw department, role and employees withan option to update employee roles
+
+
+
+
+
+
+
+
 
 connection.connect((err) => {
   if (err) throw err;
