@@ -29,12 +29,9 @@ manager_id INT
 
 
 );
-INSERT INTO department (id, name) VALUES (1, "Radiology"), (2, "Surgery"), (3, "NeoNatal");
+INSERT INTO department (id, name) VALUES (1, "Radiology"), (2, "Surgery"), (3, "NeoNatal"), (4, "Admissions");
 
 
-INSERT INTO role (id, title, salary, department_id) VALUES (1, "DON", 30, 3);
+INSERT INTO role (id, title, salary, department_id) VALUES (1, "DON", 30, 3), (2, "Surgeon", 100000, 2), (3, "Nurse", 65000, 2), (4, "Cashier", 50000, 4);
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("Sally", "Felix", 1, 25);
--- SELECT * FROM employee; 
--- SELECT * FROM department;
--- SELECT * FROM role;
+INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("Sally", "Felix", 1, 25), ("Monica", "Wisher", 2, 25), ("Phil", "Nichols", 3, 25)
