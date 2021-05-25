@@ -30,7 +30,7 @@ manager_id INT
 
 );
 INSERT INTO department (id, name) VALUES (1, "Radiology"), (2, "Surgery"), (3, "NeoNatal");
--- VALUES ("vanilla", 2.50, 100);
+
 
 INSERT INTO role (id, title, salary, department_id) VALUES (1, "DON", 30, 3);
 

@@ -19,46 +19,68 @@ const connection = mysql.createConnection({
 
 const start = () => {
 inquirer.prompt({
-name:'answer',
-type: "list",
-message :"Which area would like to view or add information to?",
-choices: ["add department", "add role", " add employee"],
+name:'action',
+type: "rawlist",
+message: "What would you like to do?",
+choices:[
+'View All Employees',
+'View all Departments',
+'Add employee',
 
+
+]
+
+})
+.then ((answer) => {
+  switch(answer.action){ 
+    case "View All Employees":
+      viewEmployee();
+      break;
+      default:
+        console.log (`Invalid action: ${answer.action}`)
+}
+//create functions to view department, role and employees 
+})
+}
+const viewEmployee = () => {
+  const query ='SELECT * FROM employee';
+  connection.query (query, (err, res) =>{
+    res.forEach(({id, first_name, last_name, role_id, manager_id}) => {
+      console.log (`ID: ${id} || NAME: ${first_name, last_name} || ID: ${role_id} || MANAGER_ID: ${manager_id}`)
+  })
+start ()
 
 
 })
-.then ((answer) =>{
-  switch (answer.answer){
-    case "add department":
-      addDepartment()
 }
-//create functions to add department, role and employees 
-const addDepartment = () => {
-  // prompt for info about the department
-  inquirer
-    .prompt({
-name: "department",
-message:"What is the name of the department you want to enter?"
+
+// const addDepartment = () => {
+//   // prompt for info about the department
+//   inquirer
+//     .prompt({
+// name: "department",
+// message:"What ?"
 
 
 
-    })
-    .then ((answer)=>{
-const query =''
+//     })
+//     .then ((answer)=>{
+// const query =''
 
 
 
-    })
-      // * **department**:
+//     })
+//       // * **department**:
 
-      // * **id** 
-      // * **name** 
-
-
-    )]
+//       // * **id** 
+//       // * **name** 
 
 
-//create functions to veiw department, role and employees withan option to update employee roles
+//     )]
+
+//     message :"Which area would like to view or add information to?",
+//     choices: ["add department", "add role", " add employee"],
+// //create functions to veiw department, role and employees withan option to update employee roles
 
 
 
@@ -71,5 +93,5 @@ const query =''
 connection.connect((err) => {
   if (err) throw err;
   console.log(`connected as id ${connection.threadId}`);
-  connection.end();
-});
+  start();
+})
